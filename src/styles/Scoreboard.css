@@ -1,0 +1,10 @@
+.scoreboard p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  .scoreboard p:nth-child(3) {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
