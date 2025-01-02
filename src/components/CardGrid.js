@@ -10,7 +10,7 @@ const CardGrid = ({ onCardClick, maxClicks }) => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await axios.get('https://dog.ceo/api/breeds/image/random/10'); // Fetch 10 random dog images
+        const response = await axios.get('https://dog.ceo/api/breeds/image/random/16'); // Fetch 10 random dog images
         const data = response.data.message;
 
         // Map the data to the expected card format
