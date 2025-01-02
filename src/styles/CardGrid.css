@@ -1,39 +1,76 @@
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 20px;
-    justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
+  gap: 10px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 150px; /* Ensures the card doesn't exceed the set size */
+  aspect-ratio: 1 / 1; /* Keeps the card square */
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column; /* Allows flexibility for image and text stacking */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 4px; /* Adds a slight rounding to images */
+}
+
+.card div {
+  margin-top: 5px; /* Adjusts spacing between image and text */
+  background-color: rgba(0, 0, 0, 0.5); /* Retain background only for the text area */
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center; /* Centers the text */
+  font-size: 0.9rem; /* Ensures text fits well */
+  width: auto; /* Adjusts the width to avoid full-card-width appearance */
+  max-width: 80%; /* Ensures the div doesn't exceed 80% of the card width */
+}
+
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjusts for smaller screens */
+    gap: 8px; /* Reduces gap for better spacing on smaller devices */
+    padding: 10px;
   }
-  
+
   .card {
-    width: 150px;
-    height: 150px;
-    background-color: #f0f0f0;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    max-width: 120px; /* Reduces size for smaller screens */
   }
-  
-  .card:hover {
-    transform: scale(1.05);
-  }
-  
-  .card img {
-    max-width: 80%;
-    max-height: 80%;
-  }
-  
+
   .card div {
-    position: absolute;
-    bottom: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
+    font-size: 0.8rem; /* Adjusts text size for smaller cards */
   }
-  
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    gap: 6px; /* Further reduces gap for very small devices */
+    padding: 5px;
+  }
+
+  .card {
+    max-width: 100px; /* Further reduces size for compact view */
+  }
+
+  .card div {
+    font-size: 0.7rem; /* Scales down text accordingly */
+  }
+}

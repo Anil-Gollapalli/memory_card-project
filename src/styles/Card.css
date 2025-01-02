@@ -20,12 +20,5 @@
     max-height: 80%;
   }
   
-  .card div {
-    position: absolute;
-    bottom: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-  }
+  
   
