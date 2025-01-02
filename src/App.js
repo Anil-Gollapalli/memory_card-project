@@ -11,9 +11,12 @@ const App = () => {
   const [gameOver, setGameOver] = useState(false);
   const [gameCount, setGameCount] = useState(1);
   const [clickLimit, setClickLimit] = useState(10); // Start with 10 attempts
+  const [clickedCardShuffle, setClickedCardShuffle] = useState(false); // Track shuffle trigger
 
   // Handle card click
   const handleCardClick = (cardId) => {
+    setClickedCardShuffle(true); // Trigger shuffle on click
+
     if (clickedCards.has(cardId)) {
       setGameOver(true); // Game over if a card is clicked twice
       return;
@@ -56,6 +59,13 @@ const App = () => {
     }
   }, [gameOver]);
 
+  // Reset shuffle trigger after each render
+  useEffect(() => {
+    if (clickedCardShuffle) {
+      setClickedCardShuffle(false);
+    }
+  }, [clickedCardShuffle]);
+
   return (
     <div className="app">
       <h1>Memory Card Game</h1>
@@ -73,7 +83,10 @@ const App = () => {
           <p>Target Best Score for Next Game: {targetBestScore}</p>
         </div>
       ) : (
-        <CardGrid onCardClick={handleCardClick} />
+        <CardGrid
+          onCardClick={handleCardClick}
+          clickedCardShuffle={clickedCardShuffle}
+        />
       )}
     </div>
   );
